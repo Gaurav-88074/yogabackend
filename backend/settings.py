@@ -178,6 +178,6 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:9000",
     # 'http://localhost:3000/',
 ]
-ALLOWED_HOST = ['*']
+ALLOWED_HOST = ['*','yogabackend-production-7788.up.railway.app']
 
 CORS_ALLOW_ALL_ORIGINS =  True
