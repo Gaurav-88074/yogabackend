@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-(95wh#u%=$jaote101p*y^miw_800pxo5yemxs8gcg+ftu042v
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*','yogabackend-production-7788.up.railway.app']
 
 
 # Application definition
@@ -128,6 +128,17 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+# DATABASES = {
+#     'default': {
+#         #'ENGINE': 'django.db.backends.sqlite3',
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'railway',
+#         'USER': 'postgres',
+#         'PASSWORD': 'v7AyA6xQtePaTePSnmhQ',
+#         'HOST': 'containers-us-west-167.railway.app',
+#         'PORT': '5985',
+#     }
+# }
 
 
 # Password validation
@@ -178,6 +189,6 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:9000",
     # 'http://localhost:3000/',
 ]
-ALLOWED_HOST = ['*','yogabackend-production-7788.up.railway.app']
+
 
 CORS_ALLOW_ALL_ORIGINS =  True
