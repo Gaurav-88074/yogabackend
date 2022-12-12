@@ -100,21 +100,22 @@ def buy_membership(request):
     try:
         body = request.data
         email = body['email']
-        batch_id =body['batch_id'] 
-        month =body['month'] 
+        batch_id = body['batch_id'] 
+        month = body['month'] 
+        enrollDate = body['enrollDate'] 
 
-        user = User.objects.filter(username = email)[0]
+        user   = User.objects.filter(username = email)[0]
         person = Person.objects.filter(user = user)[0]
-        batch = Batch.objects.filter(_id = batch_id)[0]
+        batch  = Batch.objects.filter(_id = batch_id)[0]
         # print(user,person,batch)
         newBatch = BatchesInfo.objects.create(
             person=person,
             batch=batch,
-            month=month
+            month=str(month),
+            enrollDate = enrollDate
         )
         newBatch.save()
-        # rawData = Person.objects.all()
-        # serializedData = PersonSerializer(rawData, many=True)
+        
         return Response({"message":"Payment done successfully"})
     except:
         return Response({"message":"You have already enrolled for this Month!!"})
@@ -132,13 +133,18 @@ def getAllBatches(request):
 def getCurrentBatch(request):
     try:
         body = request.data
+        
         email = body['email']
-        # month =body['month'] 
+        month =str(body['month']) 
 
         user = User.objects.filter(username = email)[0]
         person = Person.objects.filter(user = user)[0]
         
-        batch = BatchesInfo.objects.filter(person=person)[0]
+        batch = BatchesInfo.objects.filter(person=person,month=month)[0]
+        # print(batch.month)
+        if(batch.month!=month):
+            raise Exception("problem")
+
         serializedData = BatchesInfoSerializer(batch,many=False)
         return Response(serializedData.data)
     except:

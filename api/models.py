@@ -21,6 +21,7 @@ class BatchesInfo(models.Model):
     person = models.ForeignKey(Person,on_delete=models.CASCADE)
     batch  = models.ForeignKey(Batch,on_delete=models.CASCADE,)
     month  = models.CharField(max_length=100)
+    enrollDate = models.CharField(max_length=100,blank=True,null=True)
     class Meta:
         unique_together = (("person", "month"),)
     def __str__(self) -> str:
