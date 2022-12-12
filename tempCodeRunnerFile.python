@@ -1,0 +1,12 @@
+import http.client
+
+conn = http.client.HTTPConnection("127.0.0.1:8000")
+
+headers = { 'Authorization': "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcwNjk4NzUyLCJpYXQiOjE2NzA2OTg0NTIsImp0aSI6IjA5YWNlZjQwNTE1ZDQ0ZTI5YTE5ZmZlZjdmMjYxZTY3IiwidXNlcl9pZCI6MSwidXNlciI6IkdhdXJhdiJ9.KSrv-FyhNuICT63Hzchg7igfVvd1wfw2vZ1HtU2nW0s" }
+
+conn.request("GET", "/", headers=headers)
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))
