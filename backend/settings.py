@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-(95wh#u%=$jaote101p*y^miw_800pxo5yemxs8gcg+ftu042v
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*','yogabackend-production-7788.up.railway.app']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -192,3 +192,11 @@ CORS_ALLOWED_ORIGINS = [
 
 
 CORS_ALLOW_ALL_ORIGINS =  True
+
+
+ALLOWED_HOSTS = [
+    '*',
+    '0.0.0.0',
+    '127.0.0.1',
+    'yogabackend-production-7788.up.railway.app'
+]
